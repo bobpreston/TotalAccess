@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+    <comment>customer table sql for csv2db.awk, db2excel.awk, excelDbExample.awk, excelDbExample2.awk and excelDbExample3.awk</comment>
+    
+    <entry key="driverClass">org.hsqldb.jdbc.JDBCDriver</entry>
+    <entry key="databaseUrl">jdbc:hsqldb:file:testdb</entry>
+    <entry key="databaseUserName">SA</entry>
+    <entry key="databasePassword"></entry>
+    
+    <entry key="autoCommit">true</entry>
+    <entry key="databaseHeaders">true</entry>
+	
+    <entry key="insertSql">
+    <![CDATA[
+        INSERT INTO customer
+        (Id, First_Name, Last_Name, Zip)
+        VALUES
+        (:id, :firstName, :lastName, :zip)
+    ]]>
+    </entry>
+    
+    <entry key="deleteSql">
+    <![CDATA[
+        DELETE FROM customer
+    ]]>
+    </entry>
+    
+    <entry key="sqlQuery">
+    <![CDATA[
+        SELECT * FROM customer
+        WHERE zip >= :zipStart AND zip <= :zipEnd
+        ORDER BY id
+    ]]>
+    </entry>
+    
+    <entry key="sqlQueryRow">
+    <![CDATA[
+        SELECT * FROM customer
+        WHERE zip = :zip
+    ]]>
+    </entry>
+    
+</properties>

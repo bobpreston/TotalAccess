@@ -1,0 +1,21 @@
+<html>
+<body>
+    <table>
+    <tr>
+        <td><u>Food</u></td>
+        <td><u>Manufacturer</u></td>
+    </tr>
+    
+    #foreach($key in $food.map.keySet())
+    <tr>
+    
+        <td>$key</td>
+        
+        #set ($mfrTextNode = $food.map[$key].getXmlNode("mfr/text()"))
+        
+        <td>$mfrTextNode.escapeHtmlValue().trim()</td>
+        
+     </tr>
+    #end
+</body>
+</html>

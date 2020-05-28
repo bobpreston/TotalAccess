@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+    <comment>Test POST using https://httpbin.org</comment>
+    
+    <entry key="httpRequestMethod">POST</entry>
+    <entry key="httpUrl">https://httpbin.org/post</entry>
+    <entry key="httpHeader.Accept.1">text/html</entry>
+    <entry key="httpHeader.Accept.2">text/plain</entry>
+    <entry key="httpHeader.Cookie.first">foo</entry>
+    <entry key="httpHeader.Cookie.second">bar</entry>
+    <entry key="httpBody.param1"><![CDATA[Param #1]]></entry>
+    <entry key="httpBody.param2"><![CDATA[Param #2]]></entry>
+</properties>
