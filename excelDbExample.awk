@@ -29,10 +29,10 @@ BEGIN   {
 
 END {
         # Tell compiler that this is an array.
-        #customer[0];
+        customer[0];
         
-        # Use list array.
-        #createListArray(customer);
+        # Use sorted array.
+        createSortedArray(customer);
 
         # Find database entries with zip codes that are in the excel file.
         for (zip in zips) {
@@ -40,8 +40,8 @@ END {
             querySql[":zip"] = zip;
             statementHandle = queryDatabase(querySql, outArrays);
             for (i in outArrays) {
-                customer = outArrays[i];
-                print outArrays[i];
+                copyArray(customer, outArrays[i]);
+                print customer;
             }
         }
 
