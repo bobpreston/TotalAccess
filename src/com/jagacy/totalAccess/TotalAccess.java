@@ -27,7 +27,7 @@ public class TotalAccess {
         System.setProperty("org.slf4j.simpleLogger.defaultLogLevel", log);
     }
 
-    public static final String VERSION = "Jagacy Total Access 1.5.8";
+    public static final String VERSION = "Jagacy Total Access 1.5.9";
     
     private static final boolean IS_DEBUG = Boolean.getBoolean("awkDebug");
     

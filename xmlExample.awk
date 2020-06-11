@@ -8,7 +8,7 @@ BEGIN {
 }
 
 
-($1 == "daily-values")  {
+$1 ~ /^daily-values=.*$/  {
         node = getXmlNode(_$NODE, "sodium");
         
         getXmlNodeAttrs(node, attrs);
@@ -19,7 +19,7 @@ BEGIN {
 }
 
 
-($1 == "food") {
+$1 ~ /^food=.*$/ {
         node = getXmlNode(_$NODE, "sodium/text()");
         sodium += getXmlNodeValue(node);
 }

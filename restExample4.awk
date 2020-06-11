@@ -31,5 +31,5 @@ isXmlNulNode(_$NODE) {
 # else
 {
     node = getXmlNode(_$NODE, "./rate/text()");
-    print $0, "=", getXmlNodeValue(node);
+    print $0, getXmlNodeValue(node);
 }

@@ -5,5 +5,5 @@ BEGIN {
 }
 
 {
-	print xmlToJsonString(_$NODE, 2);
+	print $1;
 }

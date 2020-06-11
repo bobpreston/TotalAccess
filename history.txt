@@ -126,3 +126,8 @@ Misc. cleanup.
 Version 1.5.8
 -------------
 Added IT=json support.
+
+
+Version 1.5.9
+-------------
+Added $0=<node name>=<value><IFS>...

@@ -17,6 +17,7 @@ import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -56,11 +57,14 @@ public class HtmlExtension extends AbstractExtension {
 
     public static final NulAwkNode NUL_NODE = new NulAwkNode();
 
-    private Map<String, XPathExpression> myExpressionMap = new HashMap<String, XPathExpression>();
+    private static Map<String, XPathExpression> myExpressionMap = new Hashtable<String, XPathExpression>();
 
-    private XPath myXpath = null;
+    private static XPath myXpath = null;
+    
+    private static XPathExpression myTextXPath = null;
 
-    private XPathExpression getExpression(String path, final VariableManager vm) throws Exception {
+
+    private static XPathExpression getExpression(String path, final VariableManager vm) throws Exception {
         if (myXpath == null) {
             myXpath = XPathFactory.newInstance().newXPath();
             myXpath.setNamespaceContext(new NamespaceContext() {
@@ -1218,6 +1222,14 @@ public class HtmlExtension extends AbstractExtension {
             return null;
         }
 
+        if (myTextXPath == null) {
+            try {
+                myTextXPath = getExpression("text()", vm);
+            } catch (Exception e) {
+                throw new IOException(e);
+            }
+        }
+        
         String ifs = vm.getIFS().toString();
         ifs = StringEscapeUtils.unescapeJava(ifs);
 
@@ -1225,7 +1237,16 @@ public class HtmlExtension extends AbstractExtension {
         vm.setNODE(node);
 
         StringBuilder sb = new StringBuilder();
-        sb.append(node.getName());
+        try {
+            Node n = (Node)myTextXPath.evaluate(node.getNode(), XPathConstants.NODE);
+            String text = "";
+            if ((n != null) && (n.getNodeValue() != null)) {
+                text = n.getNodeValue();
+            }
+            sb.append(node.getName()).append("=").append(text);
+        } catch (XPathExpressionException e) {
+            throw new IOException(e);
+        }
 
         AssocArray attrs = new AssocArray(true, vm);
         node.getAttrs(attrs);
