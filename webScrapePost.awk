@@ -15,7 +15,7 @@ isXmlNulNode(_$NODE) {
 $1 ~ /^body=.*$/ {
     # Body is in JSON format.
     print ">>>> body:";
-    # Remove HTML tags
+    # Remove HTML tags.
     print createJsonNode(substr(_$NODE, 7, length(_$NODE) - 13), "/_json/form", 1, 1);
     print "";
 }

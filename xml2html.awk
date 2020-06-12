@@ -5,12 +5,12 @@ BEGIN {
 }
 
 
-($1 == "daily-values")  {
+$1 ~ /^daily-values=.*$/  {
         context["daily-values"] = _$NODE;
 }
 
 
-($1 == "food") {
+$1 ~ /^food=.*$/ {
         nameTextNode = getXmlNode(_$NODE, "name/text()");
         
         name = getXmlNodeValue(nameTextNode);
