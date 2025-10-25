@@ -1,1 +1,6 @@
-"Toral Access awk is an implementation of awk that reads MS Excel, HTML, XML, JSON, databases, and fixed width data.  It is written in Java.  Please see totalAccess.pdf for more information."
+Total Access awk is an implementation
+of awk that supports MS Excel,
+CSV, HTML, XML, JSON/Rest, databases, and 
+fixed width data.  It is written
+in Java.  For more information,
+please read totalAccess.pdf
